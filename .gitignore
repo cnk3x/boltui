@@ -1,0 +1,7 @@
+vue/
+bin/
+backup.js
+node_modules/
+.idea/
+.vscode/
+.git/

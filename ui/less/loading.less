@@ -1,0 +1,52 @@
+//main: index.less
+
+.loading {
+  width: 32px;
+  height: 32px;
+  color: blue;
+}
+
+.loading-ball-scale {
+  display: block;
+  position: relative;
+  font-size: 0;
+
+  &::before,
+  &::after {
+    position: absolute;
+
+    content: '';
+    display: block;
+    border: 3px solid currentColor;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 100%;
+
+    opacity: 0;
+    animation: ball-scale 1s 0s linear infinite;
+  }
+
+  &::after {
+    animation-delay: 0.5s;
+  }
+}
+
+@keyframes ball-scale {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  5% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}

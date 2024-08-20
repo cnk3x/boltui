@@ -1,0 +1,241 @@
+//out: ../ui.min.css, compress: true, autoprefixer: >5%,last 2 Chrome versions,not ie 6-9
+
+:root {
+  --scrollbar-size: 0.33rem;
+  --layout-border-header: 2px solid rgba(0, 0, 0, 0.2);
+  --layout-border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  overflow: hidden;
+}
+
+input {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body,
+pre,
+textarea,
+input {
+  font: 14px/1.5 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei',
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@import './scrollbar.less';
+@import './text.less';
+@import './btn.less';
+@import './flex.less';
+@import './pre.less';
+@import './popover.less';
+@import './loading.less';
+
+#slash {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  & > header {
+    flex: none;
+    padding: 0 1rem;
+
+    h1 {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      margin: 0;
+      font-weight: normal;
+
+      & > a {
+        font-size: 1.5rem;
+      }
+
+      & > span {
+        font-size: 0.75rem;
+        color: rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  & > nav {
+    flex: none;
+    padding: 0 1rem;
+
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding-bottom: 0.5rem;
+    color: #333;
+    align-items: center;
+    border-bottom: var(--layout-border-header);
+
+    & > ul {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      & > li {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        &:not(:last-child)::after {
+          content: '>';
+          font-size: 0.75rem;
+          color: #aaa;
+        }
+
+        & > a {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+      }
+    }
+  }
+
+  & > main {
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+    overflow: auto;
+
+    & > ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    & > ul > li {
+      border-bottom: var(--layout-border);
+      padding: 0.25rem 0 0.5rem;
+      margin: 0.25rem 0 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    & > ul > li > a,
+    & > ul > li > div {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1 1 auto;
+    }
+  }
+
+  & > aside {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    bottom: 1rem;
+    box-sizing: border-box;
+
+    width: 50%;
+    padding: 0.5rem 1rem;
+    border: var(--layout-border);
+    background-color: #fff;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.1);
+
+    animation: r2l 0.2s;
+
+    display: flex;
+    flex-direction: column;
+
+    & > div {
+      gap: 12px;
+      display: flex;
+      flex-direction: column;
+      flex: auto;
+      overflow: hidden;
+    }
+  }
+
+  & > .error {
+    color: red;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background-color: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    border-radius: 0.125rem;
+    margin: 0.5rem 1rem 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #app > aside {
+    left: 1rem;
+    width: auto;
+    animation: b2t 0.2s;
+  }
+}
+
+@keyframes r2l {
+  0% {
+    translate: 100%;
+  }
+  100% {
+    translate: 0;
+  }
+}
+
+@keyframes b2t {
+  0% {
+    translate: 0 100%;
+  }
+  100% {
+    translate: 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

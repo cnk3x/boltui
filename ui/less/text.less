@@ -1,0 +1,54 @@
+//main: index.less
+
+.text-size(@n, @i:1) when (@i <= @n) {
+  @size: @i * 0.25rem;
+  @half: @i - 1;
+
+  .text-@{half}\.5 {
+    font-size: @size - 0.125;
+  }
+
+  .text-@{i} {
+    font-size: @size;
+  }
+
+  .text-size(@n, (@i + 1));
+}
+
+.text-bp(@i:0) when (@i < 5) {
+  @textbps: xs, sm, base, lg, xl;
+  @bp: extract(@textbps, (@i + 1));
+  @u: if(@i > 2, 0.25, 0.125);
+  @base: if(@i > 2, 1, 0.75);
+  @x: if(@i > 2, @i - 2, @i);
+
+  .text-@{bp} {
+    font-size: @x * @u + @base * 1rem;
+  }
+
+  .text-bp(@i + 1);
+}
+
+.text-size(8);
+.text-bp();
+
+.c-gray {
+  color: #666;
+}
+
+.gap(@n, @i:1) when (@i <= @n) {
+  @size: @i * 0.25rem;
+  @half: @i - 1;
+
+  .gap-@{half}\.5 {
+    gap: @size - 0.125;
+  }
+
+  .gap-@{i} {
+    gap: @size;
+  }
+
+  .gap(@n, (@i + 1));
+}
+
+.gap(8);

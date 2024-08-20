@@ -1,0 +1,66 @@
+//main: index.less
+
+textarea.code,
+input.code,
+pre.code {
+  --radius: 0.125rem;
+  --border-color: rgba(0, 0, 0, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+
+  margin: 0;
+  padding: 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 0 2px 2px var(--shadow-color);
+  background-color: rgba(0, 0, 0, 0.05);
+  white-space: break-spaces;
+  word-break: break-all;
+
+  padding: 0.5rem;
+  display: block;
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  resize: none;
+  outline: none;
+
+  &:not([readonly]):focus-within {
+    --border-color: rgba(62, 40, 143, 0.6);
+    --shadow-color: rgba(62, 40, 143, 0.1);
+    background: transparent;
+  }
+}
+
+pre.code {
+  position: relative;
+  overflow-y: auto;
+
+  &::before {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    padding: 0.125rem 0.25rem;
+    border-radius: 0 var(--radius) 0 var(--radius);
+
+    content: attr(data-language);
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 0.7rem;
+    line-height: 1;
+
+    display: grid;
+    place-items: center;
+  }
+
+  &[data-language='text']::before {
+    background-color: #007acc;
+    color: #fff;
+  }
+
+  &[data-language='base64']::before {
+    background-color: #ffe936;
+    color: #000;
+  }
+}

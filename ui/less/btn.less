@@ -1,0 +1,63 @@
+//main: index.less
+
+.btn {
+  --btn-danger: 255, 0, 0;
+  --btn-primary: 0, 122, 204;
+
+  --btn-bg: 127, 127, 127;
+  --btn-fg: 255, 255, 255;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.125rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  transition: background-color 0.2s;
+
+  color: rgba(var(--btn-fg), 1);
+  background-color: rgba(var(--btn-bg), 1);
+
+  &:hover {
+    background-color: rgba(var(--btn-bg), 0.8);
+    color: rgba(var(--btn-fg), 0.8);
+  }
+
+  &:active {
+    background-color: rgba(var(--btn-bg), 0.6);
+    color: rgba(var(--btn-fg), 0.6);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(var(--btn-bg), 0.1);
+  }
+
+  &.text {
+    background-color: transparent;
+    --btn-fg: var(--btn-bg);
+    box-shadow: none;
+    padding: 0.125rem 0.5rem;
+  }
+
+  &.disabled,
+  &:disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.2;
+  }
+
+  &.primary {
+    --btn-bg: var(--btn-primary);
+  }
+
+  &.danger {
+    --btn-bg: var(--btn-danger);
+  }
+}
+
+a.btn {
+  text-decoration: none;
+}
